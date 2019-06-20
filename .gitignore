@@ -1,5 +1,3 @@
 .idea
 target/
 *.iml
-spring-boot-helloworld/src/main/resources/
-spring-boot-helloworld/src/test/
