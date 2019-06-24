@@ -29,5 +29,54 @@ public class User implements Serializable{
     @Column(nullable = false)
     private String regTime;
 
-    //省略getter settet方法、构造方法
+    public User(){}
+
+    public User(String nickName,String email,String userName,  String passWord, String regTime) {
+        super();
+        this.email = email;
+        this.nickName = nickName;
+        this.passWord = passWord;
+        this.userName = userName;
+        this.regTime = regTime;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getRegTime() {
+        return regTime;
+    }
+
+    public void setRegTime(String regTime) {
+        this.regTime = regTime;
+    }
 }
