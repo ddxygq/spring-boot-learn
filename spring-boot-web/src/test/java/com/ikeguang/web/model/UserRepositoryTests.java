@@ -20,6 +20,7 @@ import java.util.Date;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserRepositoryTests {
+
     @Autowired
     private UserRepository userRepository;
 
