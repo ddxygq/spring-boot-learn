@@ -18,6 +18,10 @@
     <modules>
         <module>spring-boot-helloworld</module>
         <module>spring-boot-web</module>
+        <module>spring-boot-mybatis</module>
+        <module>springbootjpa</module>
+        <module>spring-boot-jpa</module>
+        <module>sprint-boot-scheduler</module>
     </modules>
 
 
