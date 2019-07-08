@@ -22,6 +22,7 @@
         <module>springbootjpa</module>
         <module>spring-boot-jpa</module>
         <module>sprint-boot-scheduler</module>
+        <module>spring-boot-mail</module>
     </modules>
 
 
