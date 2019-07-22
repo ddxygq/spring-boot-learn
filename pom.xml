@@ -26,6 +26,7 @@
         <module>spring-boot-thymeleaf</module>
         <module>spring-boot-shiro</module>
         <module>spring-boot-jpa-thymeleaf</module>
+        <module>spring-boot-file-upload</module>
     </modules>
 
 
