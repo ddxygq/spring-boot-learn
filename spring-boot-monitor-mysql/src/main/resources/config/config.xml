@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"  standalone="yes"?>
+
+<!-- flash 项目配置信息 -->
+<root>
+    <!-- kafak配置信息 -->
+    <kafka>
+        <ipport>qcloud-test-hadoop01:9092,qcloud-test-hadoop02:9092,qcloud-test-hadoop03:9092</ipport>
+        <zookeeper>qcloud-test-hadoop01:2181,qcloud-test-hadoop02:2181</zookeeper>
+        <topic>manage-offset-mysql-test</topic>
+        <groupid>group-manage-offset-mysql-test</groupid>
+        <keySer>org.apache.kafka.common.serialization.StringDeserializer</keySer>
+        <valSer>org.apache.kafka.common.serialization.StringDeserializer</valSer>
+    </kafka>
+
+    <!-- mysql连接信息 -->
+    <mysql>
+        <url>jdbc:mysql://localhost/test?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=UTC&amp;useSSL=true</url>
+        <username>root</username>
+        <password>root</password>
+        <offsettable>manage_offset_mysql_test</offsettable>
+    </mysql>
+
+
+    <!-- redis连接信息 -->
+    <redis>
+        <host>10.1.0.20</host>
+        <port>6379</port>
+        <timeout>30000</timeout>
+        <password>123456</password>
+        <keyexists>129600</keyexists>
+    </redis>
+
+    <!-- spark配置信息 -->
+    <spark>
+        <streamname>streamname-manage-offset-mysql-test</streamname>
+        <seconds>5</seconds>
+    </spark>
+
+    <!-- file path -->
+    <path>
+        <localpath>E:\我的文件\实时\data.file</localpath>
+        <checkpointdir>hdfs://nameser/spark/checkpoint/flash/workflowdis-test/</checkpointdir>
+    </path>
+</root>

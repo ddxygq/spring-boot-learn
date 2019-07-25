@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>userList</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+    <script>
+        function del() {
+            if (confirm("您确定要删除吗？")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+</head>
+<body class="container">
+<br/>
+<h1>监控列表</h1>
+<br/><br/>
+<div class="with:80%">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>表名</th>
+            <th>列名</th>
+            <th>启用状态</th>
+            <th>编辑</th>
+            <th>删除</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  th:each="monitorTable : ${monitorTables}">
+            <th scope="row" th:text="${monitorTable.id}">1</th>
+            <td th:text="${monitorTable.tableName}">flash</td>
+            <td th:text="${monitorTable.columnName}">flash</td>
+            <td th:text="${monitorTable.status}">1</td>
+            <td><a th:href="@{/edit(id=${monitorTable.id})}">edit</a></td>
+            <td><a onclick="del()" th:href="@{/delete(id=${monitorTable.id})}">delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="form-group">
+    <div class="col-sm-2 control-label">
+        <a href="/add" th:href="@{/add}" class="btn btn-info">add</a>
+    </div>
+</div>
+</body>
+</html>
