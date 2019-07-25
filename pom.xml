@@ -20,13 +20,13 @@
         <module>spring-boot-web</module>
         <module>spring-boot-mybatis</module>
         <module>spring-boot-jpa</module>
-        <module>spring-boot-jpa</module>
         <module>sprint-boot-scheduler</module>
         <module>spring-boot-mail</module>
         <module>spring-boot-thymeleaf</module>
         <module>spring-boot-shiro</module>
         <module>spring-boot-jpa-thymeleaf</module>
         <module>spring-boot-file-upload</module>
+        <module>spring-boot-monitor-mysql</module>
     </modules>
 
 
