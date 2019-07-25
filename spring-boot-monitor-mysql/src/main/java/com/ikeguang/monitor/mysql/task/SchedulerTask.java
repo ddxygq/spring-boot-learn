@@ -48,13 +48,15 @@ public class SchedulerTask {
 
         List<MonitorTable> monitorTables = monitorTableService.findMonitorTableByStatus(STATUS);
         for (MonitorTable monitorTable : monitorTables){
-            String sql = "select 1 from" + monitorTable.getTableName() + " where " + monitorTable.getColumnName() + " = ? limit 1";
+            String sql = "select 1 from " + monitorTable.getTableName() + " where " + monitorTable.getColumnName() + " = ? limit 1";
             try {
                 PreparedStatement ps = connection.prepareStatement(sql);
+                System.out.println(sql);
+                System.out.println("dateStr => " + dateStr);
                 ps.setString(1, dateStr);
                 ResultSet resultSet = ps.executeQuery();
                 if(!resultSet.next()){
-                    mailService.sendMail("keguang@flash.cn", "job issue " + monitorTable.getColumnName(), "job issue =>" + monitorTable.getTableName());
+                    mailService.sendMail("ddxygq@163.com", "job issue " + monitorTable.getColumnName(), "job issue =>" + monitorTable.getTableName());
                     logger.info("job issue " + monitorTable.getTableName());
                 }
 
