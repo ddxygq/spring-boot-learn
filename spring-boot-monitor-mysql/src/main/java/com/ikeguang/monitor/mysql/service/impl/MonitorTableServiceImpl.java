@@ -27,13 +27,19 @@ public class MonitorTableServiceImpl implements MonitorTableService {
     }
 
     @Override
-    public List<MonitorTable> findMonitorTableByStatus(String status) {
-        return monitorTableRepository.findByStatus(status);
+    public List<MonitorTable> findByStatusAndRealtime(String status, String realtime) {
+        return monitorTableRepository.findByStatusAndRealtime(status, realtime);
     }
+
 
     @Override
     public MonitorTable findMonitorTableById(Long id) {
         return monitorTableRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public MonitorTable findByTableName(String tableName) {
+        return monitorTableRepository.findByTableName(tableName);
     }
 
     @Override

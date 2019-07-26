@@ -50,7 +50,7 @@ public class MailServiceImpl implements MailService {
             mailSender.send(message);
             logger.info("简单邮件已经发送");
         }catch (Exception e){
-            logger.error("发送简单邮件发生异常！",e);
+            logger.error("发送简单邮件发生异常！" + to, e);
         }
     }
 

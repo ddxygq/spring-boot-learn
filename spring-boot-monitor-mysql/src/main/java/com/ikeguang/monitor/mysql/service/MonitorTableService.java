@@ -14,9 +14,11 @@ public interface MonitorTableService {
 
     public List<MonitorTable> getMonitorTableList();
 
-    public List<MonitorTable> findMonitorTableByStatus(String status);
+    public List<MonitorTable> findByStatusAndRealtime(String status, String realtime);
 
     public MonitorTable findMonitorTableById(Long id);
+
+    public MonitorTable findByTableName(String tableName);
 
     public void edit(MonitorTable monitorTable);
 

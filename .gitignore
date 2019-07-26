@@ -1,6 +1,7 @@
 .idea
 target/
 *.iml
+logs
 # spring-boot-helloworld/src/main/resources/
 # spring-boot-web/src/main/resources/
 # spring-boot-web/src/test/

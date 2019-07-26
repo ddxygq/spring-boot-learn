@@ -12,21 +12,33 @@
     <form class="form-horizontal"   th:action="@{/editSubmit}" th:object="${monitorTable}"  method="post">
         <input type="hidden" name="id" th:value="*{id}" />
         <div class="form-group">
-            <label for="tableName" class="col-sm-2 control-label">userName</label>
+            <label for="tableName" class="col-sm-2 control-label">表名</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="tableName"  id="tableName" th:value="*{tableName}" placeholder="tableName"/>
             </div>
         </div>
         <div class="form-group">
-            <label for="columnName" class="col-sm-2 control-label">columnName</label>
+            <label for="dateColumnName" class="col-sm-2 control-label">date 列名</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="columnName"  id="columnName" th:value="*{columnName}" placeholder="columnName"/>
+                <input type="text" class="form-control" name="dateColumnName"  id="dateColumnName" th:value="*{dateColumnName}" placeholder="dateColumnName"/>
             </div>
         </div>
         <div class="form-group">
-            <label for="status" class="col-sm-2 control-label">status</label>
+            <label for="status" class="col-sm-2 control-label">启用状态</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="status"  id="status" th:value="*{status}" placeholder="status"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="realtime" class="col-sm-2 control-label">是否实时</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="realtime"  id="realtime" th:value="*{realtime}" placeholder="realtime"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="hourColumnName" class="col-sm-2 control-label">hour列名(可为空)</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="hourColumnName"  id="hourColumnName" th:value="*{hourColumnName}" placeholder="hourColumnName"/>
             </div>
         </div>
         <div class="form-group">

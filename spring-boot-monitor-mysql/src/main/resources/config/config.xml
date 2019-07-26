@@ -41,4 +41,8 @@
         <localpath>E:\我的文件\实时\data.file</localpath>
         <checkpointdir>hdfs://nameser/spark/checkpoint/flash/workflowdis-test/</checkpointdir>
     </path>
+
+    <monitor>
+        <mailTo>keguang@flash.cn,qinxiaodong@flash.cn,ouzili@flash.cn,caoxuefeng@flash.cn,hbzegkg@126.com</mailTo>
+    </monitor>
 </root>

@@ -26,4 +26,6 @@ public interface MonitorTableRepository extends JpaRepository<MonitorTable, Long
      * @return
      */
     List<MonitorTable> findByStatus(String status);
+
+    List<MonitorTable> findByStatusAndRealtime(String status, String realtime);
 }

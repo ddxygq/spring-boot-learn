@@ -2,6 +2,8 @@ package com.ikeguang.monitor.mysql.web;
 
 import com.ikeguang.monitor.mysql.model.MonitorTable;
 import com.ikeguang.monitor.mysql.service.MonitorTableService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,8 @@ import java.util.List;
  */
 @Controller
 public class MonitorTableController {
+
+    private static final Logger logger = LoggerFactory.getLogger(MonitorTableController.class);
 
     @Resource
     MonitorTableService monitorTableService;
@@ -40,9 +44,17 @@ public class MonitorTableController {
 
     @RequestMapping("/addSubmit")
     public String addSubmit(MonitorTable monitorTable){
-        System.out.println(monitorTable.toString());
-        monitorTableService.save(monitorTable);
-        return "redirect:/list";
+        boolean tableExist = monitorTableService.findByTableName(monitorTable.getTableName()) != null;
+        if(tableExist){
+            // 表添加重复
+            logger.info(monitorTable.getTableName()," exists ...");
+            return "redirect:/list";
+        }else{
+            logger.info("add monitor ",monitorTable.toString());
+            monitorTableService.save(monitorTable);
+            return "redirect:/list";
+        }
+
     }
 
     @RequestMapping("/edit")

@@ -3,7 +3,7 @@
 
 <configuration>
 
-    <substitutionProperty name="log.base" value="./logs/monitor"/>
+    <substitutionProperty name="log.base" value="d:/logs/monitor"/>
 
     <!-- 控制台输出日志 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">

@@ -22,18 +22,38 @@ public class MonitorTable {
     private String tableName;
 
     @Column(nullable = false)
-    private String columnName;
+    private String dateColumnName;
 
     @Column(nullable = false)
     private String status;
 
-    public MonitorTable(String tableName, String columnName, String status) {
-        this.tableName = tableName;
-        this.columnName = columnName;
-        this.status = status;
-    }
+    @Column(nullable = false)
+    private String realtime;
+
+    @Column(nullable = true)
+    private String hourColumnName;
 
     public MonitorTable() {
+    }
+
+    public MonitorTable(String tableName, String dateColumnName, String status, String realtime, String hourColumnName) {
+        this.tableName = tableName;
+        this.dateColumnName = dateColumnName;
+        this.status = status;
+        this.realtime = realtime;
+        this.hourColumnName = hourColumnName;
+    }
+
+    @Override
+    public String toString() {
+        return "MonitorTable{" +
+                "id=" + id +
+                ", tableName='" + tableName + '\'' +
+                ", dateColumnName='" + dateColumnName + '\'' +
+                ", status='" + status + '\'' +
+                ", realtime='" + realtime + '\'' +
+                ", hourColumnName='" + hourColumnName + '\'' +
+                '}';
     }
 
     public long getId() {
@@ -52,12 +72,12 @@ public class MonitorTable {
         this.tableName = tableName;
     }
 
-    public String getColumnName() {
-        return columnName;
+    public String getDateColumnName() {
+        return dateColumnName;
     }
 
-    public void setColumnName(String columnName) {
-        this.columnName = columnName;
+    public void setDateColumnName(String dateColumnName) {
+        this.dateColumnName = dateColumnName;
     }
 
     public String getStatus() {
@@ -68,13 +88,19 @@ public class MonitorTable {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "MonitorTable{" +
-                "id=" + id +
-                ", tableName='" + tableName + '\'' +
-                ", columnName='" + columnName + '\'' +
-                ", status='" + status + '\'' +
-                '}';
+    public String getRealtime() {
+        return realtime;
+    }
+
+    public void setRealtime(String realtime) {
+        this.realtime = realtime;
+    }
+
+    public String getHourColumnName() {
+        return hourColumnName;
+    }
+
+    public void setHourColumnName(String hourColumnName) {
+        this.hourColumnName = hourColumnName;
     }
 }

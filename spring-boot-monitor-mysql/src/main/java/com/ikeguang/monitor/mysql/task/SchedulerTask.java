@@ -3,6 +3,7 @@ package com.ikeguang.monitor.mysql.task;
 import com.ikeguang.monitor.mysql.model.MonitorTable;
 import com.ikeguang.monitor.mysql.service.MailService;
 import com.ikeguang.monitor.mysql.service.MonitorTableService;
+import com.ikeguang.monitor.mysql.util.Configuration;
 import com.ikeguang.monitor.mysql.util.DateUtils;
 import com.ikeguang.monitor.mysql.util.MysqlUtils;
 import org.slf4j.Logger;
@@ -17,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ Author: keguang
@@ -33,31 +35,50 @@ public class SchedulerTask {
     @Autowired
     private MailService mailService;
 
-    // 状态为1，表示其用中，否则启用
+    /**
+     * 读取配置文件
+     */
+    private static String configFile = "config/config.xml";
+    private static Map<String, String> config = Configuration.initConfig(configFile);
+
+    // 状态为1，表示启用中，否则启用
     private static final String STATUS = "1";
 
     @Resource
     private MonitorTableService monitorTableService;
 
-    @Scheduled(cron = "*/5 * * * * ?")
-    private void task(){
+    /**
+     * 离线任务每天11:10分检测一次
+     */
+    // @Scheduled(cron = "0 10 11 * * ?")
+    @Scheduled(cron = "*/10 * * * * ?")
+    private void offTask(){
 
+        // 离线通常是获取昨天时间
         String dateStr = DateUtils.getDay(1);
+        String realtime = "0";
 
         Connection connection = MysqlUtils.getConnection();
 
-        List<MonitorTable> monitorTables = monitorTableService.findMonitorTableByStatus(STATUS);
+        List<MonitorTable> monitorTables = monitorTableService.findByStatusAndRealtime(STATUS, realtime);
         for (MonitorTable monitorTable : monitorTables){
-            String sql = "select 1 from " + monitorTable.getTableName() + " where " + monitorTable.getColumnName() + " = ? limit 1";
+            String sql = "select 1 from " + monitorTable.getTableName() + " where " + monitorTable.getDateColumnName() + " = ? limit 1";
             try {
                 PreparedStatement ps = connection.prepareStatement(sql);
-                System.out.println(sql);
                 System.out.println("dateStr => " + dateStr);
                 ps.setString(1, dateStr);
                 ResultSet resultSet = ps.executeQuery();
                 if(!resultSet.next()){
-                    mailService.sendMail("ddxygq@163.com", "job issue " + monitorTable.getColumnName(), "job issue =>" + monitorTable.getTableName());
+                    // 发送邮件通知
+                    String[] to = config.get("monitor-mailTo").split(",");
+                    for(String receiver : to){
+                        mailService.sendMail(receiver, "离线job 异常 =>" + monitorTable.getTableName(), "离线job 异常 =>" + monitorTable.getTableName());
+                    }
+
                     logger.info("job issue " + monitorTable.getTableName());
+                }else {
+                    logger.info("off valid ...");
+                    System.out.println("off valid ...");
                 }
 
                 if(resultSet != null){
@@ -83,4 +104,68 @@ public class SchedulerTask {
         }
 
     }
+
+    /**
+     * 实时程序，10分钟检测一次
+     */
+    @Scheduled(cron = "*/5 * * * * ?")
+    private void realtimeTask(){
+        // 实时需要获取今天的时间
+        String timeStr = DateUtils.getDayHour(0, 0);
+        String dateStr = timeStr.substring(0, 10);
+        String hourStr = timeStr.substring(11, 13);
+
+        String realtime = "1";
+
+        Connection connection = MysqlUtils.getConnection();
+
+        List<MonitorTable> monitorTables = monitorTableService.findByStatusAndRealtime(STATUS, realtime);
+        for (MonitorTable monitorTable : monitorTables){
+            String sql = "select 1 from " + monitorTable.getTableName() + " where " + monitorTable.getDateColumnName() + " = ? and "
+                    + monitorTable.getHourColumnName() + " = ? limit 1";
+            System.out.println(sql);
+            try {
+                PreparedStatement ps = connection.prepareStatement(sql);
+                System.out.println("dateStr => " + dateStr);
+                System.out.println("hourStr => " + hourStr);
+
+                ps.setString(1, dateStr);
+                ps.setString(2, hourStr);
+                ResultSet resultSet = ps.executeQuery();
+                if(!resultSet.next()){
+
+                    // 发送邮件通知
+                    String[] to = config.get("monitor-mailTo").split(",");
+                    for(String receiver : to){
+                        mailService.sendMail(receiver, "实时 job 异常 =>" + monitorTable.getTableName(), "实时 job 异常 =>" + monitorTable.getTableName());
+                    }
+                    logger.info("job issue " + monitorTable.getTableName());
+                }else {
+                    logger.info("realtime valid ...");
+                    System.out.println("realtime valid ...");
+                }
+
+                if(resultSet != null){
+                    resultSet.close();
+                }
+
+                if(ps != null){
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                logger.error(e.getMessage());
+            }
+        }
+
+        if(connection != null){
+            try{
+                connection.close();
+            }catch (SQLException e){
+                logger.error("close conn SQLException", e.getMessage());
+            }
+
+        }
+    }
+
 }
