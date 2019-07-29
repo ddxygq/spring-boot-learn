@@ -12,17 +12,17 @@ import java.util.List;
  */
 public interface MonitorTableService {
 
-    public List<MonitorTable> getMonitorTableList();
+    List<MonitorTable> getMonitorTableList();
 
-    public List<MonitorTable> findByStatusAndRealtime(String status, String realtime);
+    List<MonitorTable> findByStatusAndRealtime(String status, String realtime);
 
-    public MonitorTable findMonitorTableById(Long id);
+    MonitorTable findMonitorTableById(Long id);
 
-    public MonitorTable findByTableName(String tableName);
+    MonitorTable findByTableName(String tableName);
 
-    public void edit(MonitorTable monitorTable);
+    void edit(MonitorTable monitorTable);
 
-    public void save(MonitorTable monitorTable);
+    void save(MonitorTable monitorTable);
 
-    public void deleteById(long id);
+    void deleteById(long id);
 }

@@ -4,14 +4,15 @@
     <meta charset="UTF-8"/>
     <title>userList</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
-    <script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
         function del() {
             if (confirm("您确定要删除吗？")) {
                 return true;
-            } else {
-                return false;
             }
+            return false;
         }
+        /*]]>*/
     </script>
 </head>
 <body class="container">
@@ -24,24 +25,24 @@
         <tr>
             <th>#</th>
             <th>表名</th>
-            <th>date 列名</th>
             <th>启用状态</th>
             <th>是否实时</th>
+            <th>date 列名</th>
             <th>hour列名</th>
             <th>编辑</th>
             <th>删除</th>
         </tr>
         </thead>
         <tbody>
-        <tr  th:each="orderlist : ${monitorTables}">
+        <tr th:each="orderlist : ${monitorTables}">
             <th scope="row" th:text="${orderlistStat.index + 1}">1</th>
             <td th:text="${orderlist.tableName}">test</td>
-            <td th:text="${orderlist.dateColumnName}">date</td>
             <td th:text="${orderlist.status}">1</td>
             <td th:text="${orderlist.realtime}">1</td>
+            <td th:text="${orderlist.dateColumnName}">date</td>
             <td th:text="${orderlist.hourColumnName}">hour</td>
-            <td><a th:href="@{/edit(id=${orderlist.id})}">edit</a></td>
-            <td><a onclick="del()" th:href="@{/delete(id=${orderlist.id})}">delete</a></td>
+            <td><a th:href="@{/edit(id=${orderlist.id})}">编辑</a></td>
+            <td><a th:onclick="return del()" th:href="@{/delete(id=${orderlist.id})}">删除</a></td>
         </tr>
         </tbody>
     </table>
