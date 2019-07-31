@@ -27,6 +27,7 @@
         <module>spring-boot-jpa-thymeleaf</module>
         <module>spring-boot-file-upload</module>
         <module>spring-boot-monitor-mysql</module>
+        <module>spring-boot-swagger2</module>
     </modules>
 
 
