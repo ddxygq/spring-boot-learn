@@ -28,6 +28,7 @@
         <module>spring-boot-file-upload</module>
         <module>spring-boot-monitor-mysql</module>
         <module>spring-boot-swagger2</module>
+        <module>spring-boot-error</module>
     </modules>
 
 
