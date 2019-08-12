@@ -29,6 +29,8 @@
         <module>spring-boot-monitor-mysql</module>
         <module>spring-boot-swagger2</module>
         <module>spring-boot-error</module>
+        <module>spring-boot-redis</module>
+        <module>spring-boot-config</module>
     </modules>
 
 
