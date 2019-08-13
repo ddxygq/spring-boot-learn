@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <title>userList</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+
 </head>
 <body class="container">
 <br/>
@@ -14,19 +15,23 @@
         <thead>
         <tr>
             <th>#</th>
-            <th>User Name</th>
-            <th>Password</th>
-            <th>Age</th>
+            <th>userName</th>
+            <th>passWord</th>
+            <th>email</th>
+            <th>nickName</th>
+            <th>regTime</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
         </thead>
         <tbody>
-        <tr  th:each="user : ${users}">
+        <tr th:each="user : ${users}">
             <th scope="row" th:text="${user.id}">1</th>
             <td th:text="${user.userName}">neo</td>
-            <td th:text="${user.password}">Otto</td>
-            <td th:text="${user.age}">6</td>
+            <td th:text="${user.passWord}">Otto</td>
+            <td th:text="${user.email}">6</td>
+            <td th:text="${user.nickName}">6</td>
+            <td th:text="${user.regTime}">6</td>
             <td><a th:href="@{/toEdit(id=${user.id})}">edit</a></td>
             <td><a th:href="@{/delete(id=${user.id})}">delete</a></td>
         </tr>

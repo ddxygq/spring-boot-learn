@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.util.Iterator;
 
 /**
  * @ Author: keguang
@@ -28,15 +29,18 @@ public class UserMutiRepositoryTest {
 
     @Test
     public void testPageQuery(){
-        int page = 1, size = 2;
-        Sort sort = new Sort(Sort.Direction.DESC, "id");
+        // page 表示需要取的页的index，从0开始取值。
+        int page = 0, size = 2;
+        Sort sort = new Sort(Sort.Direction.ASC, "id");
         Pageable pageable = new PageRequest(page, size, sort);
 
         Page<User> pageUsers= userMutiRepository.findAll(pageable);
         System.out.println("totalElements => " + pageUsers.getTotalElements());
         System.out.println("totalPages => " + pageUsers.getTotalPages());
-        for(User user : pageUsers){
-            System.out.println(user);
+        Iterator<User> users = pageUsers.iterator();
+        while (users.hasNext()){
+            User user = users.next();
+            System.out.println("user => " + user);
         }
 
         Page<User> pageUsers2 = userMutiRepository.findByUserName("bb", pageable);

@@ -2,6 +2,9 @@ package com.ikeguang.jpaThymeleaf.repository;
 
 import com.ikeguang.jpaThymeleaf.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 /**
  * @ Author: keguang

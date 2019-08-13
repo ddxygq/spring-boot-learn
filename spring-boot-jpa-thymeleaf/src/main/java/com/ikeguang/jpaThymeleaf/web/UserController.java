@@ -5,6 +5,7 @@ import com.ikeguang.jpaThymeleaf.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -27,7 +28,7 @@ public class UserController {
     }
 
     @RequestMapping("/list")
-    public String list(Model model) {
+    public String list(Model model, @RequestParam(value = "pageon", defaultValue = "1") int pageon) {
         List<User> users=userService.getUserList();
         model.addAttribute("users", users);
         return "user/list";
