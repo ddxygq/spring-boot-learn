@@ -31,6 +31,8 @@
         <module>spring-boot-error</module>
         <module>spring-boot-redis</module>
         <module>spring-boot-config</module>
+        <module>spring-boot-jdbc</module>
+        <module>spring-boot-async</module>
     </modules>
 
 
