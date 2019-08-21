@@ -1,15 +1,13 @@
-package com.ikeguang.config;
+package com.ikeguang.security;
 
-import com.ikeguang.config.model.BlogProperties;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * @ Author: keguang
- * @ Date: 2019/8/12 17:11
+ * @ Date: 2019/8/20 15:30
  * @ version: v1.0.0
  * @ description:
  */
@@ -17,11 +15,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class ApplicationTests {
 
-    @Autowired
-    private BlogProperties blogProperties;
-
     @Test
-    public void getHello(){
-        System.out.println(blogProperties.getTitle());
+    public void loadContext(){
+        System.out.println("ApplicationTests .");
     }
 }
