@@ -34,6 +34,7 @@
         <module>spring-boot-jdbc</module>
         <module>spring-boot-async</module>
         <module>spring-boot-security</module>
+        <module>spring-boot-paging</module>
     </modules>
 
     <dependencies>
