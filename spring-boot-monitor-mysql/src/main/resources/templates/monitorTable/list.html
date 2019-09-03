@@ -52,5 +52,37 @@
         <a href="/add" th:href="@{/add}" class="btn btn-info">add</a>
     </div>
 </div>
+
+<div class="modal-footer no-margin-top">
+    <ul class="pagination pull-right no-margin">
+
+        <!-- 首页 -->
+        <li>
+            <a th:href="'/list?pageNum=0'">首页</a>
+        </li>
+
+        <!-- 上一页 -->
+        <li th:if="${monitorTables.hasPrevious()}">
+            <a th:href="'/list?pageNum=' + ${monitorTables.previousPageable().getPageNumber()}" th:text="上一页"></a>
+        </li>
+
+        <!-- 中间页 -->
+        <li th:each="pageNum:${#numbers.sequence(0, monitorTables.getTotalPages() - 1)}">
+            <a th:href="'/list?pageNum=' + ${pageNum}" th:text="${pageNum + 1}" th:if="${pageNum ne monitorTables.pageable.getPageNumber()}"></a>
+            <a th:href="'/list?pageNum=' + ${pageNum}" th:text="${pageNum + 1}" th:if="${pageNum eq monitorTables.pageable.getPageNumber()}" th:style="'font-weight:bold;background: #6faed9;'"></a>
+        </li>
+
+        <!-- 下一页 -->
+        <li th:if="${monitorTables.hasNext()}">
+            <a th:href="'/list?pageNum=' + ${monitorTables.nextPageable().getPageNumber()}" th:text="下一页"></a>
+        </li>
+
+        <!-- 尾页 -->
+        <li>
+            <a th:href="'/list?pageNum=' + ${monitorTables.getTotalPages() - 1}">尾页</a>
+        </li>
+
+    </ul>
+</div>
 </body>
 </html>

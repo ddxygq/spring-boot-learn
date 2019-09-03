@@ -13,13 +13,13 @@ import java.util.Iterator;
  */
 public interface UserService {
 
-    public Page<User> getUserList(int pageNum, int pageSize);
+    Page<User> getUserList(int pageNum, int pageSize);
 
-    public User findUserById(long id);
+    User findUserById(long id);
 
-    public void save(User user);
+    void save(User user);
 
-    public void edit(User user);
+    void edit(User user);
 
-    public void delete(long id);
+    void delete(long id);
 }

@@ -4,12 +4,13 @@ import com.ikeguang.monitor.mysql.model.MonitorTable;
 import com.ikeguang.monitor.mysql.service.MonitorTableService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @ Author: keguang
@@ -31,8 +32,8 @@ public class MonitorTableController {
     }
 
     @RequestMapping("/list")
-    public String list(Model model){
-        List<MonitorTable>  monitorTables = monitorTableService.getMonitorTableList();
+    public String list(Model model, @RequestParam(value = "pageNum", defaultValue = "0") int pageNum, @RequestParam(value = "pageSize", defaultValue = "2") int pageSize){
+        Page<MonitorTable> monitorTables = monitorTableService.getMonitorTableList(pageNum, pageSize);
         model.addAttribute("monitorTables", monitorTables);
         return "monitorTable/list";
     }

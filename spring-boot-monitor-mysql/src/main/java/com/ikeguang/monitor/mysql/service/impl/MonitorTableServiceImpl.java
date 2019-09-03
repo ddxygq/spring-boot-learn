@@ -4,6 +4,10 @@ import com.ikeguang.monitor.mysql.model.MonitorTable;
 import com.ikeguang.monitor.mysql.repository.MonitorTableRepository;
 import com.ikeguang.monitor.mysql.service.MonitorTableService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +26,10 @@ public class MonitorTableServiceImpl implements MonitorTableService {
 
 
     @Override
-    public List<MonitorTable> getMonitorTableList() {
-        return monitorTableRepository.findAll();
+    public Page<MonitorTable> getMonitorTableList(int pageNum, int pageSize) {
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
+        Pageable pageable = PageRequest.of(pageNum, pageSize, sort);
+        return monitorTableRepository.findAll(pageable);
     }
 
     @Override

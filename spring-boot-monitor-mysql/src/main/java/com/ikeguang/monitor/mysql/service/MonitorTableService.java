@@ -1,6 +1,7 @@
 package com.ikeguang.monitor.mysql.service;
 
 import com.ikeguang.monitor.mysql.model.MonitorTable;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public interface MonitorTableService {
 
-    List<MonitorTable> getMonitorTableList();
+    Page<MonitorTable> getMonitorTableList(int pageNum, int pageSize);
 
     List<MonitorTable> findByStatusAndRealtime(String status, String realtime);
 
