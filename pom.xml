@@ -35,6 +35,7 @@
         <module>spring-boot-async</module>
         <module>spring-boot-security</module>
         <module>spring-boot-paging</module>
+        <module>spring-boot-datasource-jpa</module>
     </modules>
 
     <dependencies>

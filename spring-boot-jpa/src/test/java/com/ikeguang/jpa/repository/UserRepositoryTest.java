@@ -49,6 +49,9 @@ public class UserRepositoryTest {
         User user = userRepository.findByUserName("dd");
         System.out.println(user);
 
+        User user2 = userRepository.findByEmail("bb@126.com");
+        System.out.println(user2);
+
     }
 
     @Test
