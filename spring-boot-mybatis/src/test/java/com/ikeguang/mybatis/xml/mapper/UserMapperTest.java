@@ -1,7 +1,8 @@
 package com.ikeguang.mybatis.xml.mapper;
 
 import com.ikeguang.mybatis.annotation.enums.UserSexEnum;
-import com.ikeguang.mybatis.annotation.model.User;
+
+import com.ikeguang.mybatis.xml.model.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

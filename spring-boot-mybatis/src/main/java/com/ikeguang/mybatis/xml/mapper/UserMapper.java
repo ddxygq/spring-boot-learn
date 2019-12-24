@@ -1,6 +1,6 @@
 package com.ikeguang.mybatis.xml.mapper;
 
-import com.ikeguang.mybatis.annotation.model.User;
+import com.ikeguang.mybatis.xml.model.User;
 
 import java.util.List;
 

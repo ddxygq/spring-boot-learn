@@ -1,7 +1,7 @@
 package com.ikeguang.mybatis.xml.web;
 
-import com.ikeguang.mybatis.annotation.mapper.UserMapper;
-import com.ikeguang.mybatis.annotation.model.User;
+import com.ikeguang.mybatis.xml.mapper.UserMapper;
+import com.ikeguang.mybatis.xml.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

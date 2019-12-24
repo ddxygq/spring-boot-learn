@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @ description:
  */
 @SpringBootApplication
-@MapperScan("com.ikeguang.mybatis.annotation.mapper")
+@MapperScan("com.ikeguang.mybatis.xml.mapper")
 public class XMLApplication {
     public static void main(String[] args) {
         SpringApplication.run(XMLApplication.class);
