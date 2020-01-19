@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ikeguang.ajax.dao.ExecutionJobsMapper" >
+    <resultMap id="BaseResultMap" type="com.ikeguang.ajax.model.ExecutionJobs" >
+        <id column="exec_id" property="execId" jdbcType="BIGINT" />
+        <id column="project_id" property="projectId" jdbcType="BIGINT" />
+        <id column="version" property="version" jdbcType="BIGINT" />
+        <result column="flow_id" property="flowId" jdbcType="VARCHAR" />
+        <result column="job_id" property="jobId" jdbcType="VARCHAR" />
+        <result column="attempt" property="attempt" jdbcType="INTEGER"/>
+        <result column="start_time" property="startTime" jdbcType="BIGINT"/>
+        <result column="end_time" property="endTime" jdbcType="BIGINT"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <select id="getFailedList" resultMap="BaseResultMap">
+        select t.exec_id,t.project_id,t.version,t.flow_id,t.job_id,t.attempt,t.start_time,t.end_time,t.status from
+        execution_jobs t inner join (select exec_id,avg(`status`) cou,count(distinct(job_id)) cou_job
+        from execution_jobs where start_time &gt;=#{beginday,jdbcType=BIGINT} and end_time &lt;=#{endDay,jdbcType=BIGINT}
+        group by exec_id having (cou = 70 and cou_job = 1) or (cou > 50 and cou_job > 1)) t2 on t.exec_id = t2.exec_id
+        where start_time &gt;= #{beginday,jdbcType=BIGINT} and end_time &lt;= #{endDay,jdbcType=BIGINT} order by
+        t.exec_id desc
+    </select>
+
+</mapper>

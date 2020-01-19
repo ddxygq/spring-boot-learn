@@ -36,6 +36,7 @@
         <module>spring-boot-security</module>
         <module>spring-boot-paging</module>
         <module>spring-boot-datasource-jpa</module>
+        <module>spring-boot-ajax</module>
     </modules>
 
     <dependencies>

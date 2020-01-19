@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<configuration>
+
+    <substitutionProperty name="log.base" value="./logs/data"/>
+
+    <!-- 控制台输出日志 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%msg%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="infoFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <!--<Encoding>UTF-8</Encoding>-->
+        <File>${log.base}.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log.base}.%d{yyyyMMdd}.log.zip</FileNamePattern>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) [%thread] %cyan(%logger) - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <!--&lt;!&ndash; 文件输出日志，按天分割 &ndash;&gt;-->
+    <!--<appender name="timeFile" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+    <!--<File>${log.base}-time.log</File>-->
+    <!--<filter class="ch.qos.logback.core.filter.EvaluatorFilter">-->
+    <!--<evaluator>         &lt;!&ndash; 默认为 ch.qos.logback.classic.boolex.JaninoEventEvaluator &ndash;&gt;-->
+    <!--<expression>message.contains("time")</expression>-->
+    <!--</evaluator>-->
+        <!--<level>INFO</level>-->
+        <!--<onMatch>ACCEPT</onMatch>-->
+        <!--<onMismatch>DENY</onMismatch>-->
+    <!--</filter>-->
+    <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+    <!--<FileNamePattern>${log.base}.%d{yyyyMMdd}.log.zip</FileNamePattern>-->
+    <!--<maxHistory>14</maxHistory>-->
+    <!--</rollingPolicy>-->
+    <!--<layout class="ch.qos.logback.classic.PatternLayout">-->
+    <!--<pattern>%d{HH:mm:ss.SSS} %highlight(%-5level) [%thread] %cyan(%logger) - %msg%n</pattern>-->
+    <!--</layout>-->
+    <!--</appender>-->
+
+    <appender name="errorFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <!--<Encoding>UTF-8</Encoding>-->
+        <File>${log.base}-error.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log.base}-error.%d{yyyyMMdd}.log.zip</FileNamePattern>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) [%thread] %cyan(%logger) - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="infoFile" />
+        <appender-ref ref="errorFile" />
+        <!--<appender-ref ref="timeFile" />-->
+    </root>
+
+</configuration>

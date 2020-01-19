@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Azkaban失败任务列表</title>
+
+    <!-- css -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-datetimepicker.min.css}">
+
+    <!-- js -->
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap-datetimepicker.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap-datetimepicker.zh-CN.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrapValidator.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/failed.js}"></script>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        $(document).ready(function () {
+
+            //设定日期选择格式
+            $('.form_datetime').datetimepicker({
+                minView: "month", //选择日期后，不会再跳转去选择时分秒
+                language: 'zh-CN',
+                format: 'yyyy-mm-dd',
+                todayBtn: 1,
+                autoclose: 1
+            }).on("click", function () {
+                //设定日期选择开始日期需要小于结束日期
+                $("#beginDate").datetimepicker("setEndDate", $("#endDate").val());
+                $("#endDate").datetimepicker("setStartDate", $("#beginDate").val());
+            })
+        });
+
+        /*]]>*/
+    </script>
+
+</head>
+<body class="container">
+<br/>
+<h1>Azkaban 失败任务列表</h1>
+<br/><br/>
+<div>
+    <div th:include="/modules/date::dateModule"></div>
+
+    <div th:fragment="data">
+        <table id="data" class="table table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>execId</th>
+                <th>projectId</th>
+                <th>version</th>
+                <th>flowId</th>
+                <th>jobId</th>
+                <th>attempt</th>
+                <th>status</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>运行状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="azkabanExecutionJob : ${azkabanExecutionJobs}">
+                <th scope="row" th:text="${azkabanExecutionJobStat.index} + 1">1</th>
+                <td th:text="${azkabanExecutionJob.execId}">0</td>
+                <td th:text="${azkabanExecutionJob.projectId}">0</td>
+                <td th:text="${azkabanExecutionJob.version}">0</td>
+                <td th:text="${azkabanExecutionJob.flowId}">0</td>
+                <td th:text="${azkabanExecutionJob.jobId}">0</td>
+                <td th:text="${azkabanExecutionJob.attempt}">0</td>
+                <td th:text="${azkabanExecutionJob.status}">0</td>
+                <td th:text="${#dates.format(azkabanExecutionJob.startTime, 'yyyy-MM-dd HH:mm:ss')}">0</td>
+                <td th:text="${#dates.format(azkabanExecutionJob.endTime, 'yyyy-MM-dd HH:mm:ss')}">0</td>
+                <td th:text="失败">失败</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
