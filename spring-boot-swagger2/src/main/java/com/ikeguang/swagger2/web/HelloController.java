@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
 /**
- * @ Author: keguang
- * @ Date: 2019/7/30 17:42
- * @ version: v1.0.0
- * @ description:
+ * @Author: keguang
+ * @Date: 2019/7/30 17:42
+ * @version: v1.0.0
+ * @description:
  */
 
 @RestController

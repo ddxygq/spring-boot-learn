@@ -11,10 +11,10 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * @ Author: keguang
- * @ Date: 2019/7/30 17:33
- * @ version: v1.0.0
- * @ description:
+ * @Author: keguang
+ * @Date: 2019/7/30 17:33
+ * @version: v1.0.0
+ * @description:
  */
 @Configuration
 @EnableSwagger2

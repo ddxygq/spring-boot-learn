@@ -1,6 +1,7 @@
 package com.ikeguang.swagger2.web;
 
 import com.ikeguang.swagger2.model.User;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -9,13 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 /**
- * @ Author: keguang
- * @ Date: 2019/7/30 17:54
- * @ version: v1.0.0
- * @ description:
+ * @Author: keguang
+ * @Date: 2019/7/30 17:54
+ * @version: v1.0.0
+ * @description:
  */
 @RestController
 @RequestMapping(value = "/users")
+@Api(tags = "用户管理")
 public class UserController {
 
     static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
