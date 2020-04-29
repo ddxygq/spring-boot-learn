@@ -4,8 +4,8 @@
 <root>
     <!-- kafak配置信息 -->
     <kafka>
-        <ipport>qcloud-test-hadoop01:9092,qcloud-test-hadoop02:9092,qcloud-test-hadoop03:9092</ipport>
-        <zookeeper>qcloud-test-hadoop01:2181,qcloud-test-hadoop02:2181</zookeeper>
+        <ipport>kafka01:9092</ipport>
+        <zookeeper>zookeeper01:2181</zookeeper>
         <topic>manage-offset-mysql-test</topic>
         <groupid>group-manage-offset-mysql-test</groupid>
         <keySer>org.apache.kafka.common.serialization.StringDeserializer</keySer>
@@ -43,6 +43,6 @@
     </path>
 
     <monitor>
-        <mailTo>keguang@flash.cn,qinxiaodong@flash.cn,ouzili@flash.cn,caoxuefeng@flash.cn,hbzegkg@126.com</mailTo>
+        <mailTo>hbzegkg@126.com</mailTo>
     </monitor>
 </root>
