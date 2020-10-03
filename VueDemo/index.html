@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vue test</title>
+    <script src="vue.min.js" type="text/javascript"></script>
+</head>
+<body>
+
+<!--<div id="app">
+    {{ message }}
+</div>
+
+<div id="app2">
+    <span v-bind:title="message"></span>
+</div>
+
+<div id="app3">
+    <p v-if="seen">看到我了</p>
+</div>-->
+
+<div id="app4">
+    <ol>
+        <li v-for="todo in todos">
+            {{ todo.text}}
+        </li>
+    </ol>
+</div>
+
+<div id="app5">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">反转消息</button>
+</div>
+
+<div id="app6">
+    <p>{{ message }}</p>
+    <input v-model="message">
+</div>
+
+<div id="app7">
+    <ol>
+        <todo-item
+        v-for="item in groceryList"
+        v-bind:todo="item"
+        v-bind:key="item.id"
+        ></todo-item>
+    </ol>
+</div>
+
+<div id="app8">
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames }}</span>
+</div>
+
+<script type="text/javascript">
+    /*var app = new Vue({
+        el : "#app",
+        data : {"message" : 1}
+    })
+    data.message = "test"
+
+    var app2 = new Vue({
+        el: "#app2",
+        data: {
+            message : '页面加载于 ' + new Date().toLocaleString()
+        }
+    })
+
+    var app3 = new Vue({
+        el : "#app3",
+        data : {
+            seen : true
+        }
+    })*/
+
+    var app4 = new Vue({
+        el : "#app4",
+        data: {
+            todos:[
+                { text: '学习 JavaScript' },
+                { text: '学习 Vue' },
+                { text: '整个牛项目' }
+            ],
+            name : "keguang"
+        }
+    })
+
+    var app5 = new Vue({
+        el : '#app5',
+        data : {
+            message : 'Helle Vue.js!'
+        },
+        methods: {
+            reverseMessage : function () {
+                this.message = this.message.split('').reverse().join('')
+            }
+        }
+    })
+
+    var app6 = new Vue({
+        el : '#app6',
+        data: {
+            message: 'Hello Vue!'
+        }
+    })
+
+    Vue.component('todo-item', {
+        props: ['todo'],
+        template: '<li>{{ todo.text }}</li>'
+    })
+
+    var app7 = new Vue({
+        el: '#app7',
+        data: {
+            groceryList: [
+                {id: 0, text: '蔬菜'},
+                { id: 1, text: '奶酪' },
+                { id: 2, text: '随便其它什么人吃的东西' }
+            ]
+        }
+    })
+
+    var app8 = new Vue({
+        el: '#app8',
+        data: {
+            checkedNames: []
+        }
+    })
+
+</script>
+
+</body>
+</html>

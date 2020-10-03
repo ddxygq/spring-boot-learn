@@ -38,12 +38,20 @@
         <module>spring-boot-datasource-jpa</module>
         <module>spring-boot-ajax</module>
         <module>spring-boot-echarts</module>
+        <module>spring-boot-oath</module>
     </modules>
 
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.54</version>
         </dependency>
     </dependencies>
 
