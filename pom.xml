@@ -39,6 +39,7 @@
         <module>spring-boot-ajax</module>
         <module>spring-boot-echarts</module>
         <module>spring-boot-oath</module>
+        <module>spring-boot-oauth</module>
     </modules>
 
     <dependencies>
