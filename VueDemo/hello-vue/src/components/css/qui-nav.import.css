@@ -1,0 +1,64 @@
+/*QUI nav*/
+
+.qui-nav{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    font-size: 0;
+    text-align: center;
+}
+.qui-nav .nav-item{
+    -webkit-flex:1;
+    flex:1;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    overflow: hidden;
+    font-size: 14px;
+}
+.qui-nav .nav-item .nav-txt{
+    display: block;
+    position: relative;
+    height: 100%;
+}
+.qui-nav .nav-item .nav-txt:after{
+    content: '';
+    display: block;
+    position: relative;
+    height: 4px;
+    background-color: #ffcd00;
+    opacity: 0;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    width: 100%;
+    position: absolute;
+    bottom:0;
+    left: 0;
+}
+.qui-nav .nav-item.active{
+    color: #ffcd00;
+}
+.qui-nav .nav-item.active .nav-txt:after{
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+/*active态下方不铺满*/
+.qui-nav.nav-type-2 .nav-item .nav-txt{
+    display: inline-block;
+    padding: 0 5px;
+}
+
+/*居中*/
+.qui-nav.nav-type-3{
+    display: block;
+}
+.qui-nav.nav-type-3 .nav-item{
+    -webkit-flex: inherit;
+    flex: inherit;
+    display: inline-block;
+    width: 110px;
+}
