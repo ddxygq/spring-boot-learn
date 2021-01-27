@@ -40,6 +40,7 @@
         <module>spring-boot-echarts</module>
         <module>spring-boot-oath</module>
         <module>spring-boot-oauth</module>
+        <module>spring-boot-vue</module>
     </modules>
 
     <dependencies>
