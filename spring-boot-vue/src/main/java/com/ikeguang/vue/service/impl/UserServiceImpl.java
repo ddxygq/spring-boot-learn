@@ -2,7 +2,7 @@ package com.ikeguang.vue.service.impl;
 
 import com.ikeguang.vue.model.User2;
 import com.ikeguang.vue.repository.UserRepository;
-import com.ikeguang.vue.service.UserService;
+import com.ikeguang.vue.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.List;
  * @description:
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements IUserService {
 
     @Autowired
     UserRepository userRepository;

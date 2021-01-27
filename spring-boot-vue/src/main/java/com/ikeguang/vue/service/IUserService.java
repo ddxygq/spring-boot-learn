@@ -10,7 +10,7 @@ import java.util.List;
  * @version: v1.0.0
  * @description:
  */
-public interface UserService {
+public interface IUserService {
 
     List<User2> getUserList();
 

@@ -20,20 +20,20 @@ import java.util.List;
 public class User2ServiceTests {
 
     @Autowired
-    UserService userService;
+    IUserService IUserService;
 
     @Test
     public void saveUserTest(){
         for(long i = 10;i < 50; i++){
             User2 user = new User2(i, String.format("柯广 %s", i), String.format("keguang%s", i));
-            userService.saveUser(user);
+            IUserService.saveUser(user);
         }
 
     }
 
     @Test
     public void getUserList(){
-        List<User2> user2List = userService.getUserList();
+        List<User2> user2List = IUserService.getUserList();
         System.out.println(user2List);
     }
 }

@@ -1,7 +1,7 @@
 package com.ikeguang.vue.web;
 
 import com.ikeguang.vue.result.Result;
-import com.ikeguang.vue.service.UserService;
+import com.ikeguang.vue.service.IUserService;
 import com.ikeguang.vue.utils.ResultConfigFactory;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,11 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    IUserService IUserService;
 
     @ApiOperation("获取用户列表")
     @GetMapping("/users")
     public Result list(){
-        return ResultConfigFactory.builtResult(userService.getUserList());
+        return ResultConfigFactory.builtResult(IUserService.getUserList());
     }
 }

@@ -17,7 +17,8 @@
         navList: [
           {name: '/index', navItem: '首页'},
           {name: '/users', navItem: '发现'},
-          {name: '/about', navItem: 'About'}
+          {name: '/about', navItem: 'About'},
+          {name: '/write', navItem: 'Write'}
         ]
       }
     },
