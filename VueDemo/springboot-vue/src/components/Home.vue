@@ -1,5 +1,6 @@
 <template>
   <div class="app-layout">
+
     <div class="home-header">
       <div class="header-main">
         <div class="logo-wrapper">
@@ -33,6 +34,7 @@
 <style>
   .home-header {
     margin-bottom: 30px;
+    box-shadow: 0px 2px 0px #eee;
   }
 
   .header-main {

@@ -22,7 +22,7 @@
 
 <script>
   export default {
-    name: 'article',
+    name: 'articles',
     components: {},
     data() {
       return {

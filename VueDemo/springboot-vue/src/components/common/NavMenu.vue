@@ -40,11 +40,12 @@
 <style scoped>
   .el-menu {
     margin-left: 200px;
+    border-bottom: #fff;
   }
-  .el-menu-item{
+  .el-menu-item {
     height: 60px;
+    width: 100px;
     line-height: 60px;
-    display: inline-block;
-    font-size: 16px !important;
+    font-size: 18px !important;
   }
 </style>
