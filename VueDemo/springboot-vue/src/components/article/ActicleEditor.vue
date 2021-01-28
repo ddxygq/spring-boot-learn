@@ -40,28 +40,25 @@
         this.$confirm('保存', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning'
+          type: 'info'
         }).then(() => {
-          alert(value)
-          alert(render)
           this.$axios
-            .post('', {
-              id: this.article.id,
-              articleTitle: this.article.title,
-              articleContentMd: value,
-              articleContentHtml: render,
-              articleDate: this.article.date
+            .post('/article/addArticle', {
+              title: this.article.title,
+              contentMd: value,
+              contentHtml: render,
+              date: new Date()
             }).then(res => {
             if (res && res.data.code == 200) {
               this.$message({
-                type: 'info',
+                type: 'success',
                 message: '已保存成功'
               })
             }
           })
         }).catch(() => {
           this.$message({
-            type: 'info',
+            type: 'warning',
             message: '已取消保存'
           })
         })

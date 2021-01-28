@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class ResultConfigFactory {
 
-    public static Result builtResult(List list){
-        return new Result(ResultCode.SUCCESS.code, "成功", list);
+    public static Result builtResult(Object object){
+        return new Result(ResultCode.SUCCESS.code, "成功", object);
     }
 }

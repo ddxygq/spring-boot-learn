@@ -6,6 +6,8 @@ import com.ikeguang.vue.service.IArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Author: keguang
  * @Date: 2021/1/27 18:37
@@ -19,6 +21,16 @@ public class ArticleServiceImpl implements IArticleService {
 
     @Override
     public void saveArticle(Article article) {
-        articleRepository.saveArticle(article);
+        articleRepository.save(article);
+    }
+
+    @Override
+    public List<Article> list() {
+        return articleRepository.findAll();
+    }
+
+    @Override
+    public Article findByTitle(String title) {
+        return articleRepository.findByTitle(title);
     }
 }

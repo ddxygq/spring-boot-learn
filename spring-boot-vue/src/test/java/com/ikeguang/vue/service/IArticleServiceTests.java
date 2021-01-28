@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: keguang
@@ -26,5 +27,17 @@ public class IArticleServiceTests {
     public void saveArticleTest(){
         Article article = new Article(1L, "test", "test", "test", new Date());
         iArticleService.saveArticle(article);
+    }
+
+    @Test
+    public void lisTest(){
+        List<Article> list = iArticleService.list();
+        System.out.println(list);
+    }
+
+    @Test
+    public void findByTitleTest(){
+        Article article = iArticleService.findByTitle("test");
+        System.out.println(article);
     }
 }

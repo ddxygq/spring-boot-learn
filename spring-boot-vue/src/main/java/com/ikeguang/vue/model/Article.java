@@ -24,7 +24,7 @@ import java.util.Date;
 public class Article {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     @NotNull(message = "id不能为 null")
     private long id;
