@@ -38,12 +38,13 @@
 </script>
 
 <style scoped>
-  #navMenu {
-    width: 75%;
-    margin: 0 auto;
-  }
-
   .el-menu {
-    width: 100% !important;
+    margin-left: 200px;
+  }
+  .el-menu-item{
+    height: 60px;
+    line-height: 60px;
+    display: inline-block;
+    font-size: 16px !important;
   }
 </style>

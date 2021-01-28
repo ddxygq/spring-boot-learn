@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <!--<el-aside width="20%">侧边栏
+    <el-aside width="20%">侧边栏
       <el-menu :default-openeds="['1', '3']">
         <el-submenu index="1">
           <template slot="title"><i class="el-icon-message"></i>导航一</template>
@@ -48,7 +48,7 @@
           </el-submenu>
         </el-submenu>
       </el-menu>
-    </el-aside>-->
+    </el-aside>
 
     <el-container>
       <el-main>
@@ -92,11 +92,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .el-container {
+  /*.el-container {
     width:75%;
     height: 800px;
     margin: 0 auto;
-  }
+  }*/
 
   .el-header, .el-footer {
     background-color: #B3C0D1;
