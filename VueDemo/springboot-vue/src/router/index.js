@@ -29,6 +29,24 @@ export default new Router({
           component: () => import('../components/User2')
         },
         {
+          // 个人主页
+          path: '/profile',
+          name: 'profile',
+          component: () => import('../components/user/UserProfile'),
+          children: [
+            {
+              path: '/userArticles',
+              name: 'userArticles',
+              component: () => import('../components/article/UserArticles')
+            },
+            {
+              path: '/userInfo',
+              name: 'userInfo',
+              component: () => import('../components/user/UserInfo')
+            }
+          ]
+        },
+        {
           path: '/about',
           name: 'about',
           component: () => import('../components/common/about')

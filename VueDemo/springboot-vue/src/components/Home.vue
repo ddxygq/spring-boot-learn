@@ -1,6 +1,7 @@
 <template>
   <div class="app-layout">
 
+    <!-- 头部导航 -->
     <div class="home-header">
       <div class="header-main">
         <div class="logo-wrapper">
@@ -8,15 +9,17 @@
           <span>hhg</span>
         </div>
         <nav-menu></nav-menu>
-        <div class="header-user"></div>
+        <header-user></header-user>
       </div>
     </div>
 
+    <!-- 中间内容 -->
     <div class="home-container">
       <!-- 二级路由插槽 -->
       <router-view/>
     </div>
 
+    <!-- 底部 -->
     <home-footer></home-footer>
   </div>
 </template>
@@ -24,10 +27,11 @@
 <script>
   import NavMenu from '@/components/common/NavMenu'
   import HomeFooter from '@/components/common/Footer'
+  import HeaderUser from '@/components/user/HeaderUser'
 
   export default {
     name: 'home',
-    components: {HomeFooter, NavMenu}
+    components: {HomeFooter, NavMenu, HeaderUser}
   }
 </script>
 
@@ -41,6 +45,7 @@
     width: 75%;
     margin: 0 auto;
     padding: 0;
+    position: relative;
     display: flex;
   }
 
@@ -49,10 +54,11 @@
   }
 
   .header-logo{
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     background-image: url("../assets/LOGO.jpg");
     background-size: 60px;
+    margin-top: 5px;
     margin-right: 10px;
   }
 
