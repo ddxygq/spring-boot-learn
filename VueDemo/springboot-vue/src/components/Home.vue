@@ -4,10 +4,12 @@
     <!-- 头部导航 -->
     <div class="home-header">
       <div class="header-main">
-        <div class="logo-wrapper">
-          <div class="header-logo"></div>
-          <span>hhg</span>
-        </div>
+        <a href="http://localhost:8080/#/">
+          <div class="logo-wrapper">
+            <div class="header-logo"></div>
+            <span>hhg</span>
+          </div>
+        </a>
         <nav-menu></nav-menu>
         <header-user></header-user>
       </div>
@@ -25,17 +27,27 @@
 </template>
 
 <script>
-  import NavMenu from '@/components/common/NavMenu'
-  import HomeFooter from '@/components/common/Footer'
-  import HeaderUser from '@/components/user/HeaderUser'
+    import NavMenu from '@/components/common/NavMenu'
+    import HomeFooter from '@/components/common/Footer'
+    import HeaderUser from '@/components/user/HeaderUser'
 
-  export default {
-    name: 'home',
-    components: {HomeFooter, NavMenu, HeaderUser}
-  }
+    export default {
+        name: 'home',
+        components: {HomeFooter, NavMenu, HeaderUser},
+        data () {
+            return {
+                domain: 'http://localhost:8080/#/'
+            }
+        }
+    }
 </script>
 
 <style>
+  a {
+    text-decoration: none;
+    display: block;
+  }
+
   .home-header {
     margin-bottom: 30px;
     box-shadow: 0px 2px 0px #eee;
@@ -53,7 +65,7 @@
     display: flex;
   }
 
-  .header-logo{
+  .header-logo {
     height: 50px;
     width: 50px;
     background-image: url("../assets/LOGO.jpg");

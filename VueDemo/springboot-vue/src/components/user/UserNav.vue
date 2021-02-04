@@ -14,8 +14,8 @@
     data () {
       return {
         userNavs: [
-          {name: '/userInfo', navItem: '信息'},
-          {name: '/userArticles', navItem: '文章'}
+          {name: '/profile/userInfo', navItem: '我的信息'},
+          {name: '/profile/userArticles', navItem: '我的文章'}
         ]
       }
     },
