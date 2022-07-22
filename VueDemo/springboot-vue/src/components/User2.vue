@@ -59,7 +59,6 @@
           <el-table-column prop="passWord" label="密码"></el-table-column>
         </el-table>
       </el-main>
-      <el-footer>@2020 ~ 2021</el-footer>
     </el-container>
 
   </el-container>

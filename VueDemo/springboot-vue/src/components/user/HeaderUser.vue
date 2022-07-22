@@ -1,24 +1,27 @@
 <template>
 
   <!-- 头像 -->
-  <div class="user-login">
-    <span>{{user.userName}}</span>
-    <a :href="UserProfile"><img src="../../assets/LOGO.jpg"></a>
-  </div>
+  <a href="http://localhost:8080/#/profile">
+    <div class="user-login">
+      <span>{{user.userName}}</span>
+      <img src="../../assets/LOGO.jpg">
+    </div>
+  </a>
 
 </template>
 
 <script>
-  export default {
-    name: 'header-user',
-    data() {
-      return {
-        user: {
-          'userName': 'hhg'
+    export default {
+        name: 'header-user',
+        data() {
+            return {
+                user: {
+                    'userName': 'hhg'
+                },
+                domain: 'http://localhost:8080/#/profile'
+            }
         }
-      }
     }
-  }
 </script>
 
 <style scoped>
@@ -28,6 +31,10 @@
     line-height: 60px;
     right: 0;
     display: flex;
+  }
+
+  .user-login span {
+    line-height: 60px;
   }
 
   img {

@@ -35,12 +35,12 @@ export default new Router({
           component: () => import('../components/user/UserProfile'),
           children: [
             {
-              path: '/userArticles',
+              path: '/profile/userArticles',
               name: 'userArticles',
               component: () => import('../components/article/UserArticles')
             },
             {
-              path: '/userInfo',
+              path: '/profile/userInfo',
               name: 'userInfo',
               component: () => import('../components/user/UserInfo')
             }
